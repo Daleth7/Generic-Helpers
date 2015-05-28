@@ -6,12 +6,18 @@ namespace Generic_Helper{
     struct extra_arg_pack{
         template<template <typename...> class Container, typename T>
             using append_to = Container<T, TArgs...>;
+
+        template <template<typename...> class Container, typename... T>
+            using combine = Container<T..., TArgs...>;
     };
 
     template <template <typename...> class... TTArgs>
     struct extra_targ_pack{
         template <template <typename...> class Container, typename T>
             using append_to = Container<T, TTArgs<T>...>;
+
+        template <template<typename...> class Container, typename... T>
+            using combine = Container<T..., TArgs...>;
     };
 }
 
